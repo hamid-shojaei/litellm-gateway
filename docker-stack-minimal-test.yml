@@ -1,0 +1,38 @@
+version: "3.11"
+services:
+  litellm:
+    image: ghcr.io/berriai/litellm:main-stable
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.litellm.rule=Host(`litellm-dev.quantloop.net`)"
+        - "traefik.http.routers.litellm.entrypoints=websecure"
+        - "traefik.http.routers.litellm.tls.certresolver=letsencrypt"
+        - "traefik.http.services.litellm.loadbalancer.server.port=4000"
+    networks:
+      - traefik
+    environment:
+      OPENAI_API_KEY_FILE: /run/secrets/litellm_openai_api_key_v1
+      DATABASE_URL_FILE: /run/secrets/litellm_database_url_v1
+      LITELLM_MASTER_KEY_FILE: /run/secrets/litellm_master_key_v1
+      STORE_MODEL_IN_DB_FILE: /run/secrets/litellm_store_model_in_db_v1  # Only if you actually created this secret
+    secrets:
+      - litellm_openai_api_key_v1
+      - litellm_database_url_v1
+      - litellm_master_key_v1
+      - litellm_store_model_in_db_v1  # Only if present
+
+networks:
+  traefik:
+    external: true
+
+secrets:
+  litellm_openai_api_key_v1:
+    external: true
+  litellm_database_url_v1:
+    external: true
+  litellm_master_key_v1:
+    external: true
+  litellm_store_model_in_db_v1:
+    external: true
