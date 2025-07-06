@@ -1,0 +1,128 @@
+version: "3.11"
+services:
+  litellm:
+    image: ghcr.io/berriai/litellm:main-stable
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.litellm.rule=Host(`litellm-dev.quantloop.net`)"
+        - "traefik.http.routers.litellm.entrypoints=websecure"
+        - "traefik.http.routers.litellm.tls.certresolver=letsencrypt"
+        - "traefik.http.services.litellm.loadbalancer.server.port=4000"
+    networks:
+      - traefik
+    environment:
+      AWS_ACCESS_KEY_ID_FILE=/run/secrets/litellm_aws_access_key_id_v1
+      AWS_SECRET_ACCESS_KEY_FILE=/run/secrets/litellm_aws_secret_access_key_v1
+      AWS_REGION_FILE=/run/secrets/litellm_aws_region_v1
+      BEDROCK_API_KEY_FILE=/run/secrets/litellm_bedrock_api_key_v1
+      BEDROCK_API_URL_FILE=/run/secrets/litellm_bedrock_api_url_v1
+      OPENAI_API_KEY_FILE=/run/secrets/litellm_openai_api_key_v1
+      AZURE_API_KEY_FILE=/run/secrets/litellm_azure_api_key_v1
+      AZURE_API_BASE_FILE=/run/secrets/litellm_azure_api_base_v1
+      AZURE_API_VERSION_FILE=/run/secrets/litellm_azure_api_version_v1
+      COHERE_API_KEY_FILE=/run/secrets/litellm_cohere_api_key_v1
+      GEMINI_API_KEY_FILE=/run/secrets/litellm_gemini_api_key_v1
+      MISTRAL_API_KEY_FILE=/run/secrets/litellm_mistral_api_key_v1
+      LLAMA_API_KEY_FILE=/run/secrets/litellm_llama_api_key_v1
+      OPENROUTER_API_KEY_FILE=/run/secrets/litellm_openrouter_api_key_v1
+      DEEPSEEK_API_KEY_FILE=/run/secrets/litellm_deepseek_api_key_v1
+      ANTHROPIC_API_KEY_FILE=/run/secrets/litellm_anthropic_api_key_v1
+      NEBIUS_API_KEY_FILE=/run/secrets/litellm_nebius_api_key_v1
+      REQUESTY_API_KEY_FILE=/run/secrets/litellm_requesty_api_key_v1
+      HF_TOKEN_FILE=/run/secrets/litellm_hf_token_v1
+      KLUSTER_API_KEY_FILE=/run/secrets/litellm_kluster_api_key_v1
+      LITELLM_MASTER_KEY_FILE=/run/secrets/litellm_master_key_v1
+      LITELLM_PROXY_API_KEY_FILE=/run/secrets/litellm_proxy_api_key_v1
+      LITELLM_PROXY_API_BASE_FILE=/run/secrets/litellm_proxy_api_base_v1
+      DATABASE_URL_FILE=/run/secrets/litellm_database_url_v1
+      STORE_MODEL_IN_DB_FILE=/run/secrets/litellm_store_model_in_db_v1
+    secrets:
+      - litellm_aws_access_key_id_v1
+      - litellm_aws_secret_access_key_v1
+      - litellm_aws_region_v1
+      - litellm_bedrock_api_key_v1
+      - litellm_bedrock_api_url_v1
+      - litellm_openai_api_key_v1
+      - litellm_azure_api_key_v1
+      - litellm_azure_api_base_v1
+      - litellm_azure_api_version_v1
+      - litellm_cohere_api_key_v1
+      - litellm_gemini_api_key_v1
+      - litellm_mistral_api_key_v1
+      - litellm_llama_api_key_v1
+      - litellm_openrouter_api_key_v1
+      - litellm_deepseek_api_key_v1
+      - litellm_anthropic_api_key_v1
+      - litellm_nebius_api_key_v1
+      - litellm_requesty_api_key_v1
+      - litellm_hf_token_v1
+      - litellm_kluster_api_key_v1
+      - litellm_master_key_v1
+      - litellm_proxy_api_key_v1
+      - litellm_proxy_api_base_v1
+      - litellm_database_url_v1
+      - litellm_store_model_in_db_v1
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:4000/health/liveliness || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  traefik:
+    external: true
+
+secrets:
+  litellm_aws_access_key_id_v1:
+    external: true
+  litellm_aws_secret_access_key_v1:
+    external: true
+  litellm_aws_region_v1:
+    external: true
+  litellm_bedrock_api_key_v1:
+    external: true
+  litellm_bedrock_api_url_v1:
+    external: true
+  litellm_openai_api_key_v1:
+    external: true
+  litellm_azure_api_key_v1:
+    external: true
+  litellm_azure_api_base_v1:
+    external: true
+  litellm_azure_api_version_v1:
+    external: true
+  litellm_cohere_api_key_v1:
+    external: true
+  litellm_gemini_api_key_v1:
+    external: true
+  litellm_mistral_api_key_v1:
+    external: true
+  litellm_llama_api_key_v1:
+    external: true
+  litellm_openrouter_api_key_v1:
+    external: true
+  litellm_deepseek_api_key_v1:
+    external: true
+  litellm_anthropic_api_key_v1:
+    external: true
+  litellm_nebius_api_key_v1:
+    external: true
+  litellm_requesty_api_key_v1:
+    external: true
+  litellm_hf_token_v1:
+    external: true
+  litellm_kluster_api_key_v1:
+    external: true
+  litellm_master_key_v1:
+    external: true
+  litellm_proxy_api_key_v1:
+    external: true
+  litellm_proxy_api_base_v1:
+    external: true
+  litellm_database_url_v1:
+    external: true
+  litellm_store_model_in_db_v1:
+    external: true
