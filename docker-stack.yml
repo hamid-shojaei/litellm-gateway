@@ -13,31 +13,31 @@ services:
     networks:
       - traefik
     environment:
-      AWS_ACCESS_KEY_ID_FILE=/run/secrets/litellm_aws_access_key_id_v1
-      AWS_SECRET_ACCESS_KEY_FILE=/run/secrets/litellm_aws_secret_access_key_v1
-      AWS_REGION_FILE=/run/secrets/litellm_aws_region_v1
-      BEDROCK_API_KEY_FILE=/run/secrets/litellm_bedrock_api_key_v1
-      BEDROCK_API_URL_FILE=/run/secrets/litellm_bedrock_api_url_v1
-      OPENAI_API_KEY_FILE=/run/secrets/litellm_openai_api_key_v1
-      AZURE_API_KEY_FILE=/run/secrets/litellm_azure_api_key_v1
-      AZURE_API_BASE_FILE=/run/secrets/litellm_azure_api_base_v1
-      AZURE_API_VERSION_FILE=/run/secrets/litellm_azure_api_version_v1
-      COHERE_API_KEY_FILE=/run/secrets/litellm_cohere_api_key_v1
-      GEMINI_API_KEY_FILE=/run/secrets/litellm_gemini_api_key_v1
-      MISTRAL_API_KEY_FILE=/run/secrets/litellm_mistral_api_key_v1
-      LLAMA_API_KEY_FILE=/run/secrets/litellm_llama_api_key_v1
-      OPENROUTER_API_KEY_FILE=/run/secrets/litellm_openrouter_api_key_v1
-      DEEPSEEK_API_KEY_FILE=/run/secrets/litellm_deepseek_api_key_v1
-      ANTHROPIC_API_KEY_FILE=/run/secrets/litellm_anthropic_api_key_v1
-      NEBIUS_API_KEY_FILE=/run/secrets/litellm_nebius_api_key_v1
-      REQUESTY_API_KEY_FILE=/run/secrets/litellm_requesty_api_key_v1
-      HF_TOKEN_FILE=/run/secrets/litellm_hf_token_v1
-      KLUSTER_API_KEY_FILE=/run/secrets/litellm_kluster_api_key_v1
-      LITELLM_MASTER_KEY_FILE=/run/secrets/litellm_master_key_v1
-      LITELLM_PROXY_API_KEY_FILE=/run/secrets/litellm_proxy_api_key_v1
-      LITELLM_PROXY_API_BASE_FILE=/run/secrets/litellm_proxy_api_base_v1
-      DATABASE_URL_FILE=/run/secrets/litellm_database_url_v1
-      STORE_MODEL_IN_DB_FILE=/run/secrets/litellm_store_model_in_db_v1
+      AWS_ACCESS_KEY_ID_FILE: /run/secrets/litellm_aws_access_key_id_v1
+      AWS_SECRET_ACCESS_KEY_FILE: /run/secrets/litellm_aws_secret_access_key_v1
+      AWS_REGION_FILE: /run/secrets/litellm_aws_region_v1
+      BEDROCK_API_KEY_FILE: /run/secrets/litellm_bedrock_api_key_v1
+      BEDROCK_API_URL_FILE: /run/secrets/litellm_bedrock_api_url_v1
+      OPENAI_API_KEY_FILE: /run/secrets/litellm_openai_api_key_v1
+      AZURE_API_KEY_FILE: /run/secrets/litellm_azure_api_key_v1
+      AZURE_API_BASE_FILE: /run/secrets/litellm_azure_api_base_v1
+      AZURE_API_VERSION_FILE: /run/secrets/litellm_azure_api_version_v1
+      COHERE_API_KEY_FILE: /run/secrets/litellm_cohere_api_key_v1
+      GEMINI_API_KEY_FILE: /run/secrets/litellm_gemini_api_key_v1
+      MISTRAL_API_KEY_FILE: /run/secrets/litellm_mistral_api_key_v1
+      LLAMA_API_KEY_FILE: /run/secrets/litellm_llama_api_key_v1
+      OPENROUTER_API_KEY_FILE: /run/secrets/litellm_openrouter_api_key_v1
+      DEEPSEEK_API_KEY_FILE: /run/secrets/litellm_deepseek_api_key_v1
+      ANTHROPIC_API_KEY_FILE: /run/secrets/litellm_anthropic_api_key_v1
+      NEBIUS_API_KEY_FILE: /run/secrets/litellm_nebius_api_key_v1
+      REQUESTY_API_KEY_FILE: /run/secrets/litellm_requesty_api_key_v1
+      HF_TOKEN_FILE: /run/secrets/litellm_hf_token_v1
+      KLUSTER_API_KEY_FILE: /run/secrets/litellm_kluster_api_key_v1
+      LITELLM_MASTER_KEY_FILE: /run/secrets/litellm_master_key_v1
+      LITELLM_PROXY_API_KEY_FILE: /run/secrets/litellm_proxy_api_key_v1
+      LITELLM_PROXY_API_BASE_FILE: /run/secrets/litellm_proxy_api_base_v1
+      DATABASE_URL_FILE: /run/secrets/litellm_database_url_v1
+      STORE_MODEL_IN_DB_FILE: /run/secrets/litellm_store_model_in_db_v1
     secrets:
       - litellm_aws_access_key_id_v1
       - litellm_aws_secret_access_key_v1
