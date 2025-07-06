@@ -13,16 +13,7 @@ services:
     networks:
       - traefik
     environment:
-      AWS_ACCESS_KEY_ID_FILE: /run/secrets/litellm_aws_access_key_id_v1
-      AWS_SECRET_ACCESS_KEY_FILE: /run/secrets/litellm_aws_secret_access_key_v1
-      AWS_REGION_FILE: /run/secrets/litellm_aws_region_v1
-      BEDROCK_API_KEY_FILE: /run/secrets/litellm_bedrock_api_key_v1
-      BEDROCK_API_URL_FILE: /run/secrets/litellm_bedrock_api_url_v1
       OPENAI_API_KEY_FILE: /run/secrets/litellm_openai_api_key_v1
-      AZURE_API_KEY_FILE: /run/secrets/litellm_azure_api_key_v1
-      AZURE_API_BASE_FILE: /run/secrets/litellm_azure_api_base_v1
-      AZURE_API_VERSION_FILE: /run/secrets/litellm_azure_api_version_v1
-      COHERE_API_KEY_FILE: /run/secrets/litellm_cohere_api_key_v1
       GEMINI_API_KEY_FILE: /run/secrets/litellm_gemini_api_key_v1
       MISTRAL_API_KEY_FILE: /run/secrets/litellm_mistral_api_key_v1
       LLAMA_API_KEY_FILE: /run/secrets/litellm_llama_api_key_v1
@@ -39,16 +30,7 @@ services:
       DATABASE_URL_FILE: /run/secrets/litellm_database_url_v1
       STORE_MODEL_IN_DB_FILE: /run/secrets/litellm_store_model_in_db_v1
     secrets:
-      - litellm_aws_access_key_id_v1
-      - litellm_aws_secret_access_key_v1
-      - litellm_aws_region_v1
-      - litellm_bedrock_api_key_v1
-      - litellm_bedrock_api_url_v1
       - litellm_openai_api_key_v1
-      - litellm_azure_api_key_v1
-      - litellm_azure_api_base_v1
-      - litellm_azure_api_version_v1
-      - litellm_cohere_api_key_v1
       - litellm_gemini_api_key_v1
       - litellm_mistral_api_key_v1
       - litellm_llama_api_key_v1
@@ -76,25 +58,7 @@ networks:
     external: true
 
 secrets:
-  litellm_aws_access_key_id_v1:
-    external: true
-  litellm_aws_secret_access_key_v1:
-    external: true
-  litellm_aws_region_v1:
-    external: true
-  litellm_bedrock_api_key_v1:
-    external: true
-  litellm_bedrock_api_url_v1:
-    external: true
   litellm_openai_api_key_v1:
-    external: true
-  litellm_azure_api_key_v1:
-    external: true
-  litellm_azure_api_base_v1:
-    external: true
-  litellm_azure_api_version_v1:
-    external: true
-  litellm_cohere_api_key_v1:
     external: true
   litellm_gemini_api_key_v1:
     external: true
