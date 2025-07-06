@@ -1,7 +1,7 @@
 version: "3.11"
 services:
   litellm:
-    image: ghcr.io/berriai/litellm:main-stable
+    image: ghcr.io/berriai/litellm:main-v1.61.7
     deploy:
       replicas: 1
       labels:
